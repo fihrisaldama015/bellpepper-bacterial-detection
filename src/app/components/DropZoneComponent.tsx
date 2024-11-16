@@ -42,9 +42,9 @@ const DropZone = () => {
             <div className="relative">
                 {prediction && (
                     <div
-                        className={`absolute w-full h-full ${prediction.prediction === "Bacterial Spot" ? "bg-rose-500/30" : "bg-emerald-500/30"}`}></div>
+                        className={`absolute rounded-lg w-full h-full ${prediction.prediction === "Bacterial Spot" ? "bg-rose-500/30" : "bg-emerald-500/30"}`}></div>
                 )}
-                <Image src={dataURL} width="500" height="500" alt="uploaded"/>
+                <Image src={dataURL} width="500" height="500" alt="uploaded" className="rounded-lg"/>
             </div>
             <div className="mt-4 flex flex-row justify-around text-sm font-medium">
                 {prediction ? (
