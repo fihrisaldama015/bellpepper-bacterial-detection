@@ -9,10 +9,26 @@ export const predictBellPepperHealthy = async (data: File) => {
         body: formData,
       }
     );
-    return await response.json();
+    // Check if the response status indicates an error
+    if (!response.ok) {
+      // Log the error response
+      const errorData = await response.json();
+      console.log("🚀 ~ predictBellPepperHealthy ~ error response:", errorData);
+      alert(`Error: ${errorData.error}`);
+      return null;
+    }
+
+    const dataPredict = await response.json();
+    console.log("🚀 ~ predictBellPepperHealthy ~ response:", dataPredict);
+    return dataPredict;
   } catch (error) {
-    console.log(error);
-    alert(error);
+    // Handle network or unexpected errors
+    console.log("🚀 ~ predictBellPepperHealthy ~ catch block error:", error);
+    if (error instanceof Error) {
+      alert(
+        `An unexpected error occurred. Please try again. Error: ${error.message}`
+      );
+    }
     return null;
   }
 };
